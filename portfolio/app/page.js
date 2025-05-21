@@ -1,27 +1,31 @@
 "use client"
 import React from 'react'
-import { useEffect } from 'react'
-import { Typewriter } from 'react-simple-typewriter'
 import MotionButton from './components/MotionButton';
 import { UserRound } from 'lucide-react';
 import { File } from 'lucide-react';
-import { hover, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { skills } from "./data/skills"
 import { projects } from "./data/projects"
+import ContactSection from './components/ContactSection';
+import RotatingText from "./components/RotatingText"
+import Navbar from "./components/Navbar"
 
 
 
 
-const words = [
-  'Turning ideas into reality',
-  'Designing digital experiences',
-  'Developing modern web apps',
-  'Writing scalable code',
-  'Solving real-world problems',
-  'Loving minimal design',
-  'Building with React & Next.js',
-  'Learning every day'
-]
+
+
+
+// const words = [
+//   'Turning ideas into reality',
+//   'Designing digital experiences',
+//   'Developing modern web apps',
+//   'Writing scalable code',
+//   'Solving real-world problems',
+//   'Loving minimal design',
+//   'Building with React & Next.js',
+//   'Learning every day'
+// ]
 
 
 const container = {
@@ -44,30 +48,20 @@ export default function Home() {
 
   return (
     <>
+      
       <section className="relative h-screen bg-[url('/bg1.jpg')] bg-fixed bg-cover bg-center">
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
         {/* Navbar  */}
-        <nav className="relative z-10">
-          <ul className="flex gap-5 p-5 text-lg text-white">
-            <li>
-              <a href="#about">About</a>
-            </li>
-            <li>
-              <a href="#projects">Projects</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
-          </ul>
-        </nav>
+        <Navbar />
 
         {/* Main Screen  */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
+          exit={{ scale: 0.8, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.8 }}
           className="relative z-10 flex flex-col gap-5 justify-center items-baseline h-3/4 ml-5"
         >
           {/* Main Name and typewriter  */}
@@ -76,8 +70,21 @@ export default function Home() {
             <h2>
               I'm Umair Asim
             </h2>
-            <div className='text-[#5AC8FA]'>
-              <Typewriter words={words} loop cursor cursorStyle='|' cursorColor='##5AC8FA' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} />
+            <div className='text-[#5AC8FA] flex justify-center items-center gap-5'>
+              {/* <Typewriter words={words} loop cursor cursorStyle='|' cursorColor='##5AC8FA' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} /> */}
+              <h2>I'm a</h2>
+              <RotatingText
+                texts={["Developer", "Designer", "Tech Enthusiast", "Problem Solver"]}
+                mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
             </div>
           </div>
 
@@ -97,11 +104,13 @@ export default function Home() {
       </section>
 
       <section id='about' className='min-h-screen bg-[#f4f4f5] '>
+        
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.4 }}
+          exit={{ opacity: 0, y: 30, scale: 0.8 }}
           className='flex flex-col items-center py-4 text-[#0b0d0f]'
         >
           {/* Image And Title  */}
@@ -133,7 +142,7 @@ export default function Home() {
       </section>
 
       {/* Skills section  */}
-      <section className='relative min-h-screen text-white space-y-6 bg-fixed bg-[url("/bg2.jpg")] bg-cover p-10'>
+      <section className='relative min-h-screen text-white space-y-6 bg-fixed  bg-cover p-10'>
         <div className="absolute inset-0 bg-black opacity-80 h-full w-full z-0"></div>
         <h2 className='text-3xl font-bold relative z-10 text-center'>Skills</h2>
 
@@ -252,6 +261,8 @@ export default function Home() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.5 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: false, amount: 0.9 }}
+                exit={{ opacity: 0, scale: 0.8, x: -50 }}
                 key={index}
                 className="border-3 border-[#5AC8FA] rounded-lg h-[200px] p-2 space-y-3 shadow-2xl shadow-gray-700">
                 <img className='rounded-md' src={img} alt={title} />
@@ -263,10 +274,10 @@ export default function Home() {
         </div>
       </section>
       {/* Contact Section  */}
-      <section className='h-screen text-[#F4F4F5] p-6'>
-        <h2 className='text-3xl font-bold text-center'>Get in Touch</h2>
-        <p>Interested in working together or just want to say hello? Feel free to reach out!</p>
-
+      <section className='relative h-screen text-[#F4F4F5] p-6 flex justify-center items-center'>
+      
+        <ContactSection />
+        
       </section>
 
     </>
