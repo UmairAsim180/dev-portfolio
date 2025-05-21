@@ -1,27 +1,23 @@
-import React from 'react'
-import GooeyNav from './GooeyNav';
-
-const items = [
-    { label: "Home", href: "#" },
-    { label: "About", href: "#" },
-    { label: "Contact", href: "#" },
-];
-
-const Navbar = () => {
-    return (
-        <div className='relative p-5'>
-            <GooeyNav
-                items={items}
-                particleCount={15}
-                particleDistances={[90, 10]}
-                particleR={100}
-                initialActiveIndex={0}
-                animationTime={600}
-                timeVariance={300}
-                colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-            />
-        </div>
-    )
+export default function Navbar() {
+  const navigations = [
+    { menu: "Home", link: "#," },
+    { menu: "About", link: "#," },
+    { menu: "Skills", link: "#," },
+    { menu: "Contact", link: "#," },
+  ]
+  return (
+    <nav className="fixed z-[10] bg-secondry/50 backdrop-blur-md p-5 w-full">
+      <ul className="flex gap-5 font-semibold text-md">
+        {
+          navigations.map(({ menu, link }, index) => {
+            return (
+              <a key={index} href={link}>
+                <li>{menu}</li>
+              </a>
+            )
+          })
+        }
+      </ul>
+    </nav>
+  )
 }
-
-export default Navbar

@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import MotionButton from './components/MotionButton';
+import MotionButton from './components/MotionButton'; // Plan to Change this Button looking simple
 import { UserRound } from 'lucide-react';
 import { File } from 'lucide-react';
 import { motion } from "framer-motion";
@@ -9,25 +9,10 @@ import { projects } from "./data/projects"
 import ContactSection from './components/ContactSection';
 import RotatingText from "./components/RotatingText"
 import Navbar from "./components/Navbar"
+import Particles from './components/Particles';
+import Waves from "./components/Waves"
 
-
-
-
-
-
-
-// const words = [
-//   'Turning ideas into reality',
-//   'Designing digital experiences',
-//   'Developing modern web apps',
-//   'Writing scalable code',
-//   'Solving real-world problems',
-//   'Loving minimal design',
-//   'Building with React & Next.js',
-//   'Learning every day'
-// ]
-
-
+// For Staggering Items 
 const container = {
   hidden: {},
   show: {
@@ -36,25 +21,20 @@ const container = {
     },
   },
 };
-
 const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
 };
 
 
-
 export default function Home() {
 
   return (
     <>
-      
-      <section className="relative h-screen bg-[url('/bg1.jpg')] bg-fixed bg-cover bg-center">
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
+      <section id="home" className="relative h-screen bg-[url('/bg1.jpg')] bg-fixed bg-cover bg-center">
+      <div className='bg-black h-full w-full absolute opacity-50 z-[0]'></div>
         {/* Navbar  */}
-        <Navbar />
-
+        <Navbar/>
         {/* Main Screen  */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -62,7 +42,7 @@ export default function Home() {
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.8 }}
-          className="relative z-10 flex flex-col gap-5 justify-center items-baseline h-3/4 ml-5"
+          className="flex flex-col gap-5 justify-center items-baseline h-3/4 ml-5  absolute z-[1]"
         >
           {/* Main Name and typewriter  */}
 
@@ -71,7 +51,6 @@ export default function Home() {
               I'm Umair Asim
             </h2>
             <div className='text-[#5AC8FA] flex justify-center items-center gap-5'>
-              {/* <Typewriter words={words} loop cursor cursorStyle='|' cursorColor='##5AC8FA' typeSpeed={70} deleteSpeed={50} delaySpeed={1000} /> */}
               <h2>I'm a</h2>
               <RotatingText
                 texts={["Developer", "Designer", "Tech Enthusiast", "Problem Solver"]}
@@ -97,14 +76,10 @@ export default function Home() {
             <MotionButton text="Resume" icon={File} />
             <MotionButton text="Contact" icon={UserRound} />
           </div>
-
         </motion.div>
-
-
       </section>
 
-      <section id='about' className='min-h-screen bg-[#f4f4f5] '>
-        
+      <section id='about' className='min-h-screen pt-15  bg-[#f4f4f5] '>
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -142,8 +117,18 @@ export default function Home() {
       </section>
 
       {/* Skills section  */}
-      <section className='relative min-h-screen text-white space-y-6 bg-fixed  bg-cover p-10'>
-        <div className="absolute inset-0 bg-black opacity-80 h-full w-full z-0"></div>
+      <section id="skills" className='relative min-h-screen text-white space-y-6 bg-fixed  bg-cover p-10'>
+        <Particles
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+          className={"absolute inset-0 top-0 right-0"}
+        />
         <h2 className='text-3xl font-bold relative z-10 text-center'>Skills</h2>
 
         <div className="w-2/3 mx-auto language space-y-3 relative z-10">
@@ -274,10 +259,23 @@ export default function Home() {
         </div>
       </section>
       {/* Contact Section  */}
-      <section className='relative h-screen text-[#F4F4F5] p-6 flex justify-center items-center'>
-      
+      <section id="contact" className='relative min-h-screen text-[#F4F4F5] p-6 flex justify-center items-center'>
+
         <ContactSection />
-        
+        <Waves
+          lineColor="#fff"
+          backgroundColor="transparent"
+          waveSpeedX={0.02}
+          waveSpeedY={0.01}
+          waveAmpX={40}
+          waveAmpY={20}
+          friction={0.9}
+          tension={0.01}
+          maxCursorMove={120}
+          xGap={12}
+          yGap={36}
+          className='z-[-1]'
+        />
       </section>
 
     </>
