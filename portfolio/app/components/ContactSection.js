@@ -57,9 +57,9 @@ export default function ContactSection() {
             exit={{ opacity: 0, y: 50 }}
             className="p-4"
         >
-            <div className="grid sm:grid-cols-2 items-start gap-12 p-8 mx-auto max-w-4xl bg-white [box-shadow:0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+            <div className="grid sm:grid-cols-2 items-start gap-12 p-8 mx-auto max-w-4xl bg-color6 [box-shadow:0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
                 <div>
-                    <h1 className="text-slate-900 text-3xl font-semibold">Let's Talk</h1>
+                    <h1 className="text-color1 text-3xl font-semibold">Let's Talk</h1>
                     <p className="text-sm text-slate-500 mt-4 leading-relaxed">Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project and provide help.</p>
 
                     <div className="mt-12">

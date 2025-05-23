@@ -11,6 +11,7 @@ import RotatingText from "./components/RotatingText"
 import Navbar from "./components/Navbar"
 import Particles from './components/Particles';
 import Waves from "./components/Waves"
+import Link from 'next/link';
 
 // For Staggering Items 
 const container = {
@@ -31,10 +32,10 @@ export default function Home() {
 
   return (
     <>
-      <section id="home" className="relative h-screen bg-[url('/bg1.jpg')] bg-fixed bg-cover bg-center">
-      <div className='bg-black h-full w-full absolute opacity-50 z-[0]'></div>
+      <section id="home" className="relative h-screen bg-[url('/bg1.jpg')] bg-fixed bg-cover bg-center pt-10">
+        <div className='bg-color1 h-full w-full inset-0 absolute opacity-50 z-[0]'></div>
         {/* Navbar  */}
-        <Navbar/>
+        <Navbar />
         {/* Main Screen  */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -42,19 +43,19 @@ export default function Home() {
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.8 }}
-          className="flex flex-col gap-5 justify-center items-baseline h-3/4 ml-5  absolute z-[1]"
+          className="flex flex-col gap-5 justify-center items-baseline h-3/4 ml-20  absolute z-[1]"
         >
           {/* Main Name and typewriter  */}
 
-          <div className='text-5xl font-bold text-white'>
+          <div className='text-5xl space-y-3 font-bold text-color6'>
             <h2>
               I'm Umair Asim
             </h2>
-            <div className='text-[#5AC8FA] flex justify-center items-center gap-5'>
+            <div className='text-color6 flex justify-center items-center gap-5'>
               <h2>I'm a</h2>
               <RotatingText
                 texts={["Developer", "Designer", "Tech Enthusiast", "Problem Solver"]}
-                mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                mainClassName="px-2 sm:px-2 md:px-3 bg-color4 text-color1 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -79,14 +80,14 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section id='about' className='min-h-screen pt-15  bg-[#f4f4f5] '>
+      <section id='about' className='min-h-screen pt-20 bg-color6 '>
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.4 }}
           exit={{ opacity: 0, y: 30, scale: 0.8 }}
-          className='flex flex-col items-center py-4 text-[#0b0d0f]'
+          className='flex flex-col items-center py-4 text-color1'
         >
           {/* Image And Title  */}
           <div className='flex flex-col justify-center items-center'>
@@ -94,7 +95,7 @@ export default function Home() {
             <h3 className='text-xl font-semibold mt-5'><span className='text-3xl font-bold'>Umair Asim</span> - Full Stack Developer</h3>
           </div>
           {/* Description About me  */}
-          <div className="w-2/3 my-3 text-base text-gray-700 leading-relaxed tracking-wide">
+          <div className="w-2/3 my-3 text-base text-color2 leading-relaxed tracking-wide">
             <p>
               <span className="block mb-4">
                 I'm <strong>Umair Asim</strong>, a passionate and self-taught frontend developer from Pakistan, currently pursuing my intermediate studies.
@@ -117,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* Skills section  */}
-      <section id="skills" className='relative min-h-screen text-white space-y-6 bg-fixed  bg-cover p-10'>
+      <section id="skills" className='relative z-[0] min-h-screen text-color6 space-y-6 bg-fixed bg-cover p-10 pt-20'>
         <Particles
           particleColors={['#ffffff', '#ffffff']}
           particleCount={200}
@@ -127,11 +128,11 @@ export default function Home() {
           moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={false}
-          className={"absolute inset-0 top-0 right-0"}
+          className={"absolute inset-0 top-0 right-0 z-[-1]"}
         />
-        <h2 className='text-3xl font-bold relative z-10 text-center'>Skills</h2>
+        <h2 className='text-3xl font-bold text-color6 text-center'>Skills</h2>
 
-        <div className="w-2/3 mx-auto language space-y-3 relative z-10">
+        <div className="w-2/3 mx-auto language space-y-3">
           <h3 className='text-xl font-semibold'>Languages</h3>
 
           <motion.div
@@ -148,7 +149,7 @@ export default function Home() {
                   whileTap={{ scale: 0.8 }}
                   variants={item}
                   key={index}
-                  className='flex flex-col justify-center items-center bg-white text-black rounded-md p-5 w-22 h-22'>
+                  className='flex flex-col justify-center items-center bg-color6 text-color1 rounded-md p-5 w-22 h-22'>
                   <img className='w-20' src={icon} alt={icon} />
                   <span>{title}</span>
                 </motion.div>
@@ -157,7 +158,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="w-2/3 mx-auto frameworks space-y-3  relative z-10">
+        <div className="w-2/3 mx-auto frameworks space-y-3 ">
           <h3 className='text-xl font-semibold'>Frameworks</h3>
           <motion.div
             variants={container}
@@ -173,7 +174,7 @@ export default function Home() {
                   variants={item}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.8 }}
-                  className='flex flex-col justify-center items-center bg-white text-black rounded-md p-5 w-22 h-22'
+                  className='flex flex-col justify-center items-center bg-color6 text-color1 rounded-md p-5 w-22 h-22'
                 >
                   <img className='w-20' src={icon} alt={icon} />
                   <span>{title}</span>
@@ -183,7 +184,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="w-2/3 mx-auto backend space-y-3  relative z-10">
+        <div className="w-2/3 mx-auto backend space-y-3 ">
           <h3 className='text-xl font-semibold'>Backend</h3>
           <motion.div
             variants={container}
@@ -199,7 +200,7 @@ export default function Home() {
                   whileTap={{ scale: 0.8 }}
                   variants={item}
                   key={index}
-                  className='flex flex-col justify-center items-center bg-white text-black rounded-md p-5 w-22 h-22'>
+                  className='flex flex-col justify-center items-center bg-color6 text-color1 rounded-md p-5 w-22 h-22'>
                   <img className='w-20' src={icon} alt={icon} />
                   <span>{title}</span>
                 </motion.div>
@@ -207,7 +208,7 @@ export default function Home() {
             })}
           </motion.div>
         </div>
-        <div className="w-2/3 mx-auto tools space-y-3  relative z-10">
+        <div className="w-2/3 mx-auto tools space-y-3 ">
           <h3 className='text-xl font-semibold'>Tools / Utilities</h3>
           <motion.div
             variants={container}
@@ -223,7 +224,7 @@ export default function Home() {
                   whileTap={{ scale: 0.8 }}
                   variants={item}
                   key={index}
-                  className='flex flex-col justify-center items-center bg-white text-black rounded-md p-5 w-22 h-22'>
+                  className='flex flex-col justify-center items-center bg-color6 text-color1 rounded-md p-5 w-22 h-22'>
                   <img className='w-20' src={icon} alt={icon} />
                   <span>{title}</span>
                 </motion.div>
@@ -234,32 +235,35 @@ export default function Home() {
 
       </section>
       {/* Section of projects  */}
-      <section className="project h-screen p-5 bg-[#f4f4f5]">
-        <h2 className='text-3xl text-[#0B0D0F] font-bold relative z-10 text-center'>Projects</h2>
+      <section id='projects' className="project h-screen pt-20 p-5 bg-color6">
+        <h2 className='text-3xl text-color1 font-bold text-center'>Projects</h2>
 
         <div className='grid grid-cols-3 gap-8 w-[80%] mx-auto my-5 '>
           {projects.map(({ title, img }, index) => {
             return (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, x: -50 }}
-                whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.5 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                viewport={{ once: false, amount: 0.9 }}
-                exit={{ opacity: 0, scale: 0.8, x: -50 }}
-                key={index}
-                className="border-3 border-[#5AC8FA] rounded-lg h-[200px] p-2 space-y-3 shadow-2xl shadow-gray-700">
-                <img className='rounded-md' src={img} alt={title} />
-                <h2 className='text-xl text-[#0B0D0F] font-semibold text-center'>{title}</h2>
-              </motion.div>
+              <Link href={`/project/${title}`} key={index}>
+                {/* Link to the project */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, x: -50 }}
+                  whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.5 }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  viewport={{ once: false, amount: 0.9 }}
+                  exit={{ opacity: 0, scale: 0.8, x: -50 }}
+                  key={index}
+                  className="border-3 border-[#5AC8FA] rounded-lg h-[200px] p-2 space-y-3 shadow-2xl shadow-gray-700">
+                  <img className='rounded-md' src={img} alt={title} />
+                  <h2 className='text-xl text-color1 font-semibold text-center'>{title}</h2>
+                </motion.div>
+              </Link>
             )
           })
           }
         </div>
       </section>
       {/* Contact Section  */}
-      <section id="contact" className='relative min-h-screen text-[#F4F4F5] p-6 flex justify-center items-center'>
+      <section id="contact" className='relative min-h-screen text-color6 p-6 flex justify-center items-center'>
 
         <ContactSection />
         <Waves

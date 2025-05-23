@@ -7,10 +7,13 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
-  			secondry: '#0B0D0F',
-  			darkGray: '#1A1A1A',
-  			lightGray: '#A0A0A0',
-  			sand: '#E4CBAF',
+  			// Add custom colors here
+			color1:"#0B0D0F",
+			color2:"#1A1A1A",
+			color3:"#A0A0A0",
+			color4:"#00CCFF",
+			color5:"#E4CBAF",
+			color6:"#F4F4F5",
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
