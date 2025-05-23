@@ -5,9 +5,15 @@ import { notFound } from 'next/navigation'
 
 const Project = () => {
     const {projectName} = useParams()
+    // redirect to / after 3 sec 
+    setTimeout(() => {
+        window.location.href = '/'
+    }, 3000);
   return (
     <>
-        <h2>{projectName}</h2>
+        <div className='flex h-screen w-screen justify-center items-center text-3xl text-white'>
+          <h2 className='animate-pulse'>Under Construction...</h2>
+        </div>
     </>
   )
 }
