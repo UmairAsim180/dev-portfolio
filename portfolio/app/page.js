@@ -32,10 +32,10 @@ export default function Home() {
 
   return (
     <>
-      <section id="home" className="relative h-screen bg-[url('/bg1.jpg')] bg-fixed bg-cover bg-center pt-10">
+      <section id="home" className="relative h-screen bg-[url('/bg1.jpg')] bg-fixed bg-cover px-4 bg-center pt-10">
         <div className='bg-color1 h-full w-full inset-0 absolute opacity-50 z-[0]'></div>
-        {/* Navbar  */}
-        <Navbar />
+      {/* Navbar  */}
+      <Navbar />
         {/* Main Screen  */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -43,7 +43,7 @@ export default function Home() {
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.8 }}
-          className="flex flex-col gap-5 justify-center items-baseline h-3/4 ml-20  absolute z-[1]"
+          className="flex flex-col gap-5 justify-center items-baseline h-3/4 md:ml-20  absolute z-[1]"
         >
           {/* Main Name and typewriter  */}
 
@@ -51,11 +51,11 @@ export default function Home() {
             <h2>
               I'm Umair Asim
             </h2>
-            <div className='text-color6 flex justify-center items-center gap-5'>
+            <div className='text-color6 flex flex-col items-baseline justify-center gap-5'>
               <h2>I'm a</h2>
               <RotatingText
                 texts={["Developer", "Designer", "Tech Enthusiast", "Problem Solver"]}
-                mainClassName="px-2 sm:px-2 md:px-3 bg-color4 text-color1 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-blue-500 to-blue-700 text-color1 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -92,10 +92,13 @@ export default function Home() {
           {/* Image And Title  */}
           <div className='flex flex-col justify-center items-center'>
             <img src="/personal.png" alt="Umair" className='rounded-full shadow-2xl shadow-black border-white border-4 h-[200px]' />
-            <h3 className='text-xl font-semibold mt-5'><span className='text-3xl font-bold'>Umair Asim</span> - Full Stack Developer</h3>
+            <div className='flex flex-col justify-center items-center mt-5'>
+              <span className='text-3xl font-bold'>Umair Asim</span>
+              <h3 className='text-xl font-semibold mt-5'> - Full Stack Developer</h3>
+            </div>
           </div>
           {/* Description About me  */}
-          <div className="w-2/3 my-3 text-base text-color2 leading-relaxed tracking-wide">
+          <div className="md:w-2/3 my-3 text-base mx-5 text-color2 leading-relaxed tracking-wide">
             <p>
               <span className="block mb-4">
                 I'm <strong>Umair Asim</strong>, a passionate and self-taught frontend developer from Pakistan, currently pursuing my intermediate studies.
@@ -140,7 +143,7 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-6 justify-center items-center gap-5"
+            className="grid grid-cols-2 md:grid-cols-6 justify-center items-center gap-5"
           >
             {skills.languages.map(({ title, icon }, index) => {
               return (
@@ -165,7 +168,7 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-6 gap-5"
+            className="grid grid-cols-2 md:grid-cols-6 gap-5"
           >
             {skills.frameworks.map(({ title, icon }, index) => {
               return (
@@ -191,7 +194,7 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-6 gap-5"
+            className="grid grid-cols-2 md:grid-cols-6 gap-5"
           >
             {skills.backend.map(({ title, icon }, index) => {
               return (
@@ -215,7 +218,7 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-6 gap-5"
+            className="grid grid-cols-2 md:grid-cols-6 gap-5"
           >
             {skills.tools.map(({ title, icon }, index) => {
               return (
@@ -238,7 +241,7 @@ export default function Home() {
       <section id='projects' className="project h-screen pt-20 p-5 bg-color6">
         <h2 className='text-3xl text-color1 font-bold text-center'>Projects</h2>
 
-        <div className='grid grid-cols-3 gap-8 w-[80%] mx-auto my-5 '>
+        <div className='grid md:grid-cols-3 gap-8 w-[80%] mx-auto my-5 '>
           {projects.map(({ title, img }, index) => {
             return (
               <Link href={`/project/${title}`} key={index}>
